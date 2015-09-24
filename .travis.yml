@@ -12,6 +12,7 @@ addons:
   postgresql: "9.3"
 before_script:
   - bundle exec rake db:migrate:reset
+  - bundle exec rake db:migrate
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
 cache:
