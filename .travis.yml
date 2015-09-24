@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+- 2.2.2
+deploy:
+  provider: heroku
+  api_key:
+    secure: x7aESwGXQGUE/ssIKOsb4I8JjH6tCOVEJXIx0QkFFzuf/27QItJrWjQb4pDMKS8iq9MxGV7NnNoidTq0UF5kZw8LIXVrwFS/WFpCAG25FQ03A17Be99CBnnschPIvIjr0w3MvMVsZ2wzBNRQHtE7j0NngH9XGK1QIwAGKOkmwqysrEX/lNraS7sncCJIPBkjCbEEr6SsbUdC9+/OgjpvCcEa+mLPh1p9lAim0fmSvpN92+MNoBpkGr3COvVQvSHn/2eGp8xPHksDA8eelT0ub5MNCWZkkh/NkIZ1iRN0JjAzPPGQCXRacRU3zUGwUsMHcPky8mKo2yz1+gY/o2yhqcyUk9zaKidkSffRFELR1UyuO5BOU9aH+ggYUmYmfi1sFFaWunOtCYNkR6gswN4dCKYqxAI0PxrE4/BGlpaBcQmNHUEozweBhBdx/I/hdPyo4pSIYEnxTvkgZmKbjM05ExFy1YO3/E5X/LoQn4vyuJqx5YiEruIMtVNv++54WFZ/Yay9m3bHFPUKRVn0aqFUpf08biIAOKs5CqdwYnahCssYHDJVrDGU/ibecdIlvxdIES5LMFSZ4KQxOX7c5PGsekx4AXOWDSht/Ev9KkrssUpdZETct9IB+8CVMX5iCDZzYKMDIqXuzpk40C0UWIiabTlzT/8WDn78rH4NX63UUPI=
+  app: glacial-waters-8433
+  on:
+    repo: okamuratakeshi/rails_enpit
+addons:
+  postgresql: "9.3"
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
